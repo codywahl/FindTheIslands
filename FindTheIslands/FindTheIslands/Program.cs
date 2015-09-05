@@ -46,6 +46,8 @@ namespace FindTheIslands
 
         private static bool CheckIfItsANewIsland(int row, int col)
         {
+            Console.WriteLine("Row: " + row + " Col: " + col);
+
             if (islandsArray[row, col] == 1)
             {
                 visitedArray[row, col] = 1;
@@ -54,6 +56,25 @@ namespace FindTheIslands
                 if (row != 0)
                 {
                     if (visitedArray[row - 1, col] == 1)
+                    {
+                        return false;
+                    }
+                }
+
+                //Check below for neighbor island.
+                if (row < islandsArray.GetLength(1) -1 )
+                {
+                    if (visitedArray[row + 1, col] == 1)
+                    {
+                        return false;
+                    }
+                }
+
+                //Check for right neighbor island.
+                int x = islandsArray.GetLength(0);
+                if (col < (islandsArray.GetLength(0) - 1))
+                {
+                    if (visitedArray[row, col + 1] == 1)
                     {
                         return false;
                     }
